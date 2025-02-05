@@ -6,6 +6,7 @@ describe('Orange HRM Testes', () => {
     passwordField: "[name='password']", // campo de senha
     loginButton: "[type='submit']", // botão de login
     secaoTituloTopBar: ".oxd-topbar-header-breadcrumb-module", // Título da página
+    dashboardGrid: ".orangehrm-dashboard-grid", // Grid do dashboard para verificar se a localização da página está correta
     credencialErradaAlerta: "[role='alert']" // Alerta de credenciais inválidas
   }
 
@@ -17,7 +18,7 @@ describe('Orange HRM Testes', () => {
     cy.get(listaSeletores.loginButton).click() // Clica no botão 'Login'
     cy.location('pathname').should('equal', '/web/index.php/dashboard/index') // Verifica se a URL é igual ao que foi passado
     // Outra forma de verificar a página correta
-    cy.get(listaSeletores.secaoTituloTopBar).contains('Dashboard') // Verifica se o texto 'Dashboard' está no título da página
+    cy.get(listaSeletores.dashboardGrid) // Verifica se o grid do dashboard está presente
   })
 
   // Teste 2: Login com falha
