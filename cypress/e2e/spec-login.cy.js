@@ -1,3 +1,6 @@
+// Importando o arquivo JSON que contém os dados de usuário para serem usados nos testes:
+import userData from '../fixtures/userData.json'
+
 describe('Orange HRM Testes', () => {
 
   // Objetos de seletores criados para serem usados nos testes:
@@ -10,24 +13,11 @@ describe('Orange HRM Testes', () => {
     credencialErradaAlerta: "[role='alert']" // Alerta de credenciais inválidas
   }
 
-  // Dados para serem usados nos objetos:
-  const dadosUsuario = {
-    usuarioSucesso: {
-      username: 'Admin',
-      password: 'admin123'
-    },
-    usuarioFalha: {
-      username: 'Teste',
-      password: 'teste'
-    }
-  }
-  
-
   // Teste 1: Login com sucesso
   it('Login com sucesso', () => { // Nome do teste
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login') // Passando a URL
-    cy.get(listaSeletores.usernameField).type(dadosUsuario.usuarioSucesso.username) // Preenche o campo de usuário com o valor 'Admin' usando os dados da const 'dadosUsuario' ('usuarioSucesso'/'username')
-    cy.get(listaSeletores.passwordField).type(dadosUsuario.usuarioSucesso.password) // Preenche o campo de senha usando os dados da const 'dadosUsuario' ('usuarioSucesso'/'password')
+    cy.get(listaSeletores.usernameField).type(userData.usuarioSucesso.username) // Preenche o campo de usuário com o valor 'Admin' usando os dados de 'usuarioSucesso'/'username' do arquivo userData.json
+    cy.get(listaSeletores.passwordField).type(userData.usuarioSucesso.password) // Preenche o campo de senha usando os dados de 'usuarioSucesso'/'password' do arquivo userData.json
     cy.get(listaSeletores.loginButton).click() // Clica no botão 'Login'
     cy.location('pathname').should('equal', '/web/index.php/dashboard/index') // Verifica se a URL é igual ao que foi passado
     // Outra forma de verificar a página correta
@@ -37,8 +27,8 @@ describe('Orange HRM Testes', () => {
   // Teste 2: Login com falha
   it('Login com falha', () => { // Nome do teste
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login') // Passando a URL
-    cy.get(listaSeletores.usernameField).type(dadosUsuario.usuarioFalha.username) // Preenche o campo de usuário com o usuário inválido usando os dados da const 'dadosUsuario' ('usuarioFalha'/'username')
-    cy.get(listaSeletores.passwordField).type(dadosUsuario.usuarioFalha.password) // Preenche o campo de senha com a senha inválida usando os dados da const 'dadosUsuario' ('usuarioFalha'/'password')
+    cy.get(listaSeletores.usernameField).type(userData.usuarioFalha.username) // Preenche o campo de usuário com o usuário inválido usando os dados de 'usuarioFalha'/'username' do arquivo userData.json
+    cy.get(listaSeletores.passwordField).type(userData.usuarioFalha.password) // Preenche o campo de senha com a senha inválida usando os dados de 'usuarioFalha'/'password' do arquivo userData.json
     cy.get(listaSeletores.loginButton).click() // Clica no botão 'Login'
     cy.get(listaSeletores.credencialErradaAlerta) // Verifica se o alerta de erro apareceu  
   })
