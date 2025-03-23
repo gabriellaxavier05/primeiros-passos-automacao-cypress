@@ -15,7 +15,7 @@ describe('Orange HRM Testes', () => {
 
   // Teste 1: Login com sucesso
   it('Login com sucesso', () => { // Nome do teste
-    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login') // Passando a URL
+    cy.visit('/auth/login') // Passando a URL; URL básica definida no arquivo cypress.config.js
     cy.get(listaSeletores.usernameField).type(userData.usuarioSucesso.username) // Preenche o campo de usuário com o valor 'Admin' usando os dados de 'usuarioSucesso'/'username' do arquivo userData.json
     cy.get(listaSeletores.passwordField).type(userData.usuarioSucesso.password) // Preenche o campo de senha usando os dados de 'usuarioSucesso'/'password' do arquivo userData.json
     cy.get(listaSeletores.loginButton).click() // Clica no botão 'Login'
@@ -26,7 +26,7 @@ describe('Orange HRM Testes', () => {
 
   // Teste 2: Login com falha
   it('Login com falha', () => { // Nome do teste
-    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login') // Passando a URL
+    cy.visit('/auth/login') // Passando a URL; URL básica definida no arquivo cypress.config.js
     cy.get(listaSeletores.usernameField).type(userData.usuarioFalha.username) // Preenche o campo de usuário com o usuário inválido usando os dados de 'usuarioFalha'/'username' do arquivo userData.json
     cy.get(listaSeletores.passwordField).type(userData.usuarioFalha.password) // Preenche o campo de senha com a senha inválida usando os dados de 'usuarioFalha'/'password' do arquivo userData.json
     cy.get(listaSeletores.loginButton).click() // Clica no botão 'Login'
