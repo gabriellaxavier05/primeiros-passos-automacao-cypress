@@ -10,7 +10,8 @@ describe('Orange HRM Testes', () => {
     loginButton: "[type='submit']", // botão de login
     secaoTituloTopBar: ".oxd-topbar-header-breadcrumb-module", // Título da página
     dashboardGrid: ".orangehrm-dashboard-grid", // Grid do dashboard para verificar se a localização da página está correta
-    credencialErradaAlerta: "[role='alert']" // Alerta de credenciais inválidas
+    credencialErradaAlerta: "[role='alert']", // Alerta de credenciais inválidas
+    myInfoButton: "[href='/web/index.php/pim/viewMyDetails']" // Seletor do botão 'My Info'
   }
 
   // Teste 1: Login com sucesso
@@ -31,5 +32,17 @@ describe('Orange HRM Testes', () => {
     cy.get(listaSeletores.passwordField).type(userData.usuarioFalha.password) // Preenche o campo de senha com a senha inválida usando os dados de 'usuarioFalha'/'password' do arquivo userData.json
     cy.get(listaSeletores.loginButton).click() // Clica no botão 'Login'
     cy.get(listaSeletores.credencialErradaAlerta) // Verifica se o alerta de erro apareceu  
+  })
+
+  // Novo cenário de teste para verificar a atualização de informações do usuário feita com sucesso
+  it.only('Atualização de informações do usuário com sucesso', () => { // it.only() é usado para rodar apenas este teste
+    cy.visit('/auth/login') // Passando a URL; URL básica definida no arquivo cypress.config.js
+    cy.get(listaSeletores.usernameField).type(userData.usuarioSucesso.username) // Preenche o campo de usuário com o valor 'Admin' usando os dados de 'usuarioSucesso'/'username' do arquivo userData.json
+    cy.get(listaSeletores.passwordField).type(userData.usuarioSucesso.password) // Preenche o campo de senha usando os dados de 'usuarioSucesso'/'password' do arquivo userData.json
+    cy.get(listaSeletores.loginButton).click() // Clica no botão 'Login'
+    cy.location('pathname').should('equal', '/web/index.php/dashboard/index') // Verifica se a URL é igual ao que foi passado
+    // Outra forma de verificar a página correta
+    cy.get(listaSeletores.dashboardGrid) // Verifica se o grid do dashboard está presente
+    cy.get(listaSeletores.myInfoButton).click() // Clica no link 'My Info'
   })
 })
