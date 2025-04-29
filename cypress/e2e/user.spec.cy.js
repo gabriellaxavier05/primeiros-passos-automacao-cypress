@@ -14,6 +14,10 @@ describe('Orange HRM Testes', () => {
     myInfoButton: "[href='/web/index.php/pim/viewMyDetails']", // Seletor do botão 'My Info'
     firstNameField: "[name='firstName']", // Campo de nome
     lastNameField: "[name='lastName']", // Campo de sobrenome
+    genericField: ".oxd-input--active", // Campo genérico para ser usado em outros testes
+    dateField: "[placeholder='mm-dd-yyyy']", // Campo de data
+    dateCloseButton: ".--close", // Botão de fechar o calendário
+    submitButton: "[type='submit']", // Botão de salvar
   }
 
   // Teste 1: Login com sucesso
@@ -48,5 +52,13 @@ describe('Orange HRM Testes', () => {
     cy.get(listaSeletores.myInfoButton).click() // Clica no link 'My Info'
     cy.get(listaSeletores.firstNameField).clear().type('Nome Teste') // Limpa o campo de nome e preenche com o valor 'Nome Teste'
     cy.get(listaSeletores.lastNameField).clear().type('Sobrenome Teste') // Limpa o campo de sobrenome e preenche com o valor 'Sobrenome Teste'
+    //cy.get(listaSeletores.genericField).eq(3).clear().type('NickName Teste') // Preenche o campo "Nick Name" com o valor 'NickName Teste'
+    cy.get(listaSeletores.genericField).eq(4).clear().type('EmployeeT') // Preenche o campo "Employee Id" com o valor 'EmployeeT'
+    cy.get(listaSeletores.genericField).eq(5).clear().type('13579') // Preenche o campo "Other Id" com o valor '13579'
+    cy.get(listaSeletores.genericField).eq(6).clear().type('123456789') // Preenche o campo "Driver's License Number" com o valor '123456789'
+    cy.get(listaSeletores.genericField).eq(7).clear().type('2025-04-29') // Preenche o campo "License Expiry Date" com o valor '2025-04-29'
+    cy.get(listaSeletores.dateCloseButton).click() // Clica no botão de fechar o calendário
+    cy.get(listaSeletores.submitButton).eq(0).click() // Clica no botão de salvar
+    cy.get('body').should('contain', 'Successfully Updated') // Verifica se a mensagem de sucesso aparece na tela
   })
 })
