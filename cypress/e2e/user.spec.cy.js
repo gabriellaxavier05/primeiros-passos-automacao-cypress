@@ -11,7 +11,9 @@ describe('Orange HRM Testes', () => {
     secaoTituloTopBar: ".oxd-topbar-header-breadcrumb-module", // Título da página
     dashboardGrid: ".orangehrm-dashboard-grid", // Grid do dashboard para verificar se a localização da página está correta
     credencialErradaAlerta: "[role='alert']", // Alerta de credenciais inválidas
-    myInfoButton: "[href='/web/index.php/pim/viewMyDetails']" // Seletor do botão 'My Info'
+    myInfoButton: "[href='/web/index.php/pim/viewMyDetails']", // Seletor do botão 'My Info'
+    firstNameField: "[name='firstName']", // Campo de nome
+    lastNameField: "[name='lastName']", // Campo de sobrenome
   }
 
   // Teste 1: Login com sucesso
@@ -44,5 +46,7 @@ describe('Orange HRM Testes', () => {
     // Outra forma de verificar a página correta
     cy.get(listaSeletores.dashboardGrid) // Verifica se o grid do dashboard está presente
     cy.get(listaSeletores.myInfoButton).click() // Clica no link 'My Info'
+    cy.get(listaSeletores.firstNameField).clear().type('Nome Teste') // Limpa o campo de nome e preenche com o valor 'Nome Teste'
+    cy.get(listaSeletores.lastNameField).clear().type('Sobrenome Teste') // Limpa o campo de sobrenome e preenche com o valor 'Sobrenome Teste'
   })
 })
