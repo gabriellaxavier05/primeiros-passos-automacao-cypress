@@ -17,6 +17,9 @@ describe('Orange HRM Testes', () => {
     genericField: ".oxd-input--active", // Campo genérico para ser usado em outros testes
     dateField: "[placeholder='mm-dd-yyyy']", // Campo de data
     dateCloseButton: ".--close", // Botão de fechar o calendário
+    genericCombobox: ".oxd-select-text--arrow",
+    opcaoComboboxNationallity: ".oxd-select-dropdown > :nth-child(5)", // Opção de nacionalidade "American"
+    opcaoComboboxMaritalStatus: ".oxd-select-dropdown > :nth-child(2)", // Opção de estado civil "Single"
     submitButton: "[type='submit']", // Botão de salvar
   }
 
@@ -53,11 +56,15 @@ describe('Orange HRM Testes', () => {
     cy.get(listaSeletores.firstNameField).clear().type('Nome Teste') // Limpa o campo de nome e preenche com o valor 'Nome Teste'
     cy.get(listaSeletores.lastNameField).clear().type('Sobrenome Teste') // Limpa o campo de sobrenome e preenche com o valor 'Sobrenome Teste'
     //cy.get(listaSeletores.genericField).eq(3).clear().type('NickName Teste') // Preenche o campo "Nick Name" com o valor 'NickName Teste'
-    cy.get(listaSeletores.genericField).eq(4).clear().type('EmployeeT') // Preenche o campo "Employee Id" com o valor 'EmployeeT'
-    cy.get(listaSeletores.genericField).eq(5).clear().type('13579') // Preenche o campo "Other Id" com o valor '13579'
-    cy.get(listaSeletores.genericField).eq(6).clear().type('123456789') // Preenche o campo "Driver's License Number" com o valor '123456789'
-    cy.get(listaSeletores.genericField).eq(7).clear().type('2025-04-29') // Preenche o campo "License Expiry Date" com o valor '2025-04-29'
+    cy.get(listaSeletores.genericField).eq(3).clear().type('EmployeeT') // Preenche o campo "Employee Id" com o valor 'EmployeeT'
+    cy.get(listaSeletores.genericField).eq(5).clear().type('13579') // Preenche o campo "Other Id" com o valor '135794
+    cy.get(listaSeletores.genericField).eq(5).clear().type('123456789') // Preenche o campo "Driver's License Number" com o valor '123456789'
+    cy.get(listaSeletores.genericField).eq(6).clear().type('2025-04-29') // Preenche o campo "License Expiry Date" com o valor '2025-04-29'
     cy.get(listaSeletores.dateCloseButton).click() // Clica no botão de fechar o calendário
+    cy.get(listaSeletores.genericCombobox).eq(0).click() // Clica no combobox "Nationality"
+    cy.get(listaSeletores.opcaoComboboxNationallity).click() // Seleciona a nacionalidade "American" 
+    cy.get(listaSeletores.genericCombobox).eq(1).click() // Clica no combobox "Marital Status"
+    cy.get(listaSeletores.opcaoComboboxMaritalStatus).click() // Seleciona o estado civil "Single"
     cy.get(listaSeletores.submitButton).eq(0).click() // Clica no botão de salvar
     cy.get('body').should('contain', 'Successfully Updated') // Verifica se a mensagem de sucesso aparece na tela
   })
