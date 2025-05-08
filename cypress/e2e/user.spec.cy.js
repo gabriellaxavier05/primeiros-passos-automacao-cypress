@@ -25,7 +25,7 @@ describe('Orange HRM Testes', () => {
   }
 
   // Teste 1: Login com sucesso
-  it.only('Login com sucesso', () => { // Nome do teste
+  it('Login com sucesso', () => { // Nome do teste
     loginPage.acessoPaginaLogin() // Acessa a página de login
     loginPage.loginComUsuario(userData.usuarioSucesso.username, userData.usuarioSucesso.password) // Faz o login com usuário e senha válidos
     dashboardPage.checkDashboardPage() // Verifica se está na página do dashboard
@@ -33,12 +33,9 @@ describe('Orange HRM Testes', () => {
   })
 
   // Teste 2: Login com falha
-  it('Login com falha', () => { // Nome do teste
-    cy.visit('/auth/login') // Passando a URL; URL básica definida no arquivo cypress.config.js
-    cy.get(listaSeletores.usernameField).type(userData.usuarioFalha.username) // Preenche o campo de usuário com o usuário inválido usando os dados de 'usuarioFalha'/'username' do arquivo userData.json
-    cy.get(listaSeletores.passwordField).type(userData.usuarioFalha.password) // Preenche o campo de senha com a senha inválida usando os dados de 'usuarioFalha'/'password' do arquivo userData.json
-    cy.get(listaSeletores.loginButton).click() // Clica no botão 'Login'
-    cy.get(listaSeletores.credencialErradaAlerta) // Verifica se o alerta de erro apareceu  
+  it.only('Login com falha', () => { // Nome do teste
+    loginPage.acessoPaginaLogin() // Acessa a página de login
+    loginPage.loginComUsuario(userData.usuarioFalha.username, userData.usuarioFalha.password) // Faz o login com usuário e senha inválidos
   })
 
   // Novo cenário de teste para verificar a atualização de informações do usuário feita com sucesso

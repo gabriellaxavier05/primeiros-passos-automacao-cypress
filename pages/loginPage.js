@@ -22,6 +22,7 @@ class LoginPage {
     cy.get(this.listaSeletores().usernameField).type(username) // this é uma autoreferência para a própria classe; chama a função 'listaSeletores', chama o objeto 'usernameField' e preenche o campo de usuário
     cy.get(this.listaSeletores().passwordField).type(password) // O conceito é o mesmo para o campo de senha; preenche o campo de senha
     cy.get(this.listaSeletores().loginButton).click() // Clica no botão 'Login'
+    cy.get(this.listaSeletores().credencialErradaAlerta).should('not.exist') // Verifica se o alerta de erro não existe; se não existir, o login foi bem sucedido
   }
 }
 
