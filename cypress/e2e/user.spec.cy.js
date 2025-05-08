@@ -2,17 +2,17 @@
 import userData from '../fixtures/userData.json' // Importando o arquivo JSON que contém os dados de usuário para serem usados nos testes
 import LoginPage from '../../pages/loginPage.js' // Importando a classe LoginPage
 import DashboardPage from '../../pages/dashboardPage.js' // Importando a classe DashboardPage
+import MenuPage from '../../pages/menuPage.js' // Importando a classe MenuPage
 
 
 // INSTANCIAÇÕES
 const loginPage = new LoginPage() // Instanciando a classe LoginPage
 const dashboardPage = new DashboardPage() // Instanciando a classe DashboardPage
-
+const menuPage = new MenuPage() // Instanciando a classe MenuPage
 
 describe('Orange HRM Testes', () => {
   // Objetos de seletores criados para serem usados nos testes:
   const listaSeletores = {
-    myInfoButton: "[href='/web/index.php/pim/viewMyDetails']", // Seletor do botão 'My Info'
     firstNameField: "[name='firstName']", // Campo de nome
     lastNameField: "[name='lastName']", // Campo de sobrenome
     genericField: ".oxd-input--active", // Campo genérico para ser usado em outros testes
@@ -28,7 +28,8 @@ describe('Orange HRM Testes', () => {
   it.only('Login com sucesso', () => { // Nome do teste
     loginPage.acessoPaginaLogin() // Acessa a página de login
     loginPage.loginComUsuario(userData.usuarioSucesso.username, userData.usuarioSucesso.password) // Faz o login com usuário e senha válidos
-    dashboardPage.checkDashboardPage() // Verifica se estamos na página do dashboard
+    dashboardPage.checkDashboardPage() // Verifica se está na página do dashboard
+    menuPage.acessoMyInfo() // Acessa a página 'My Info'
   })
 
   // Teste 2: Login com falha
