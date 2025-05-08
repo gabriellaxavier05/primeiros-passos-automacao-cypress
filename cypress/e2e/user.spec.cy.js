@@ -1,13 +1,17 @@
-// Importando o arquivo JSON que contém os dados de usuário para serem usados nos testes:
-import LoginPage from '../../pages/loginPage.js'
-import userData from '../fixtures/userData.json'
+// IMPORTAÇÕES
+import userData from '../fixtures/userData.json' // Importando o arquivo JSON que contém os dados de usuário para serem usados nos testes
+import LoginPage from '../../pages/loginPage.js' // Importando a classe LoginPage
+import DashboardPage from '../../pages/dashboardPage.js' // Importando a classe DashboardPage
 
+
+// INSTANCIAÇÕES
 const loginPage = new LoginPage() // Instanciando a classe LoginPage
+const dashboardPage = new DashboardPage() // Instanciando a classe DashboardPage
+
 
 describe('Orange HRM Testes', () => {
   // Objetos de seletores criados para serem usados nos testes:
   const listaSeletores = {
-    dashboardGrid: ".orangehrm-dashboard-grid", // Grid do dashboard para verificar se a localização da página está correta
     myInfoButton: "[href='/web/index.php/pim/viewMyDetails']", // Seletor do botão 'My Info'
     firstNameField: "[name='firstName']", // Campo de nome
     lastNameField: "[name='lastName']", // Campo de sobrenome
@@ -24,11 +28,7 @@ describe('Orange HRM Testes', () => {
   it.only('Login com sucesso', () => { // Nome do teste
     loginPage.acessoPaginaLogin() // Acessa a página de login
     loginPage.loginComUsuario(userData.usuarioSucesso.username, userData.usuarioSucesso.password) // Faz o login com usuário e senha válidos
-    /*
-    cy.location('pathname').should('equal', '/web/index.php/dashboard/index') // Verifica se a URL é igual ao que foi passado
-    // Outra forma de verificar a página correta
-    cy.get(listaSeletores.dashboardGrid) // Verifica se o grid do dashboard está presente 
-    */
+    dashboardPage.checkDashboardPage() // Verifica se estamos na página do dashboard
   })
 
   // Teste 2: Login com falha
