@@ -34,5 +34,6 @@ describe('Orange HRM Testes', () => {
     dashboardPage.checkDashboardPage() // Verifica se está na página do dashboard
     menuPage.acessoMyInfo() // Acessa a página 'My Info'
     myInfoPage.preenchimentoPersonalDetails('Nome Teste', 'Sobrenome Teste', 'EmployeeT', '13579', '123456789', '2025-04-29') // Preenche os detalhes pessoais com informações passadas por aqui
+    myInfoPage.saveForm() // Salva o formulário
   })
 })

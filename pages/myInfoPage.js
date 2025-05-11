@@ -29,7 +29,10 @@ class MyInfoPage {
         cy.get(this.listaSeletores().opcaoComboboxNationallity).click() // Seleciona a nacionalidade "American" 
         cy.get(this.listaSeletores().genericCombobox).eq(1).click() // Clica no combobox "Marital Status"
         cy.get(this.listaSeletores().opcaoComboboxMaritalStatus).click() // Seleciona o estado civil "Single"
-        cy.get(this.listaSeletores().submitButton).eq(0).click() // Clica no botão de salvar
+    }
+
+    saveForm() { // Função para salvar o formulário
+        cy.get(this.listaSeletores().submitButton).eq(0).click({force: true}) // Clica no botão de salvar
         cy.get('body').should('contain', 'Successfully Updated') // Verifica se a mensagem de sucesso aparece na tela
     }
 }
