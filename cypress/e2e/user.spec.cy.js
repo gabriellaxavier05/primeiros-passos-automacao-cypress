@@ -13,15 +13,6 @@ const menuPage = new MenuPage() // Instanciando a classe MenuPage
 const myInfoPage = new MyInfoPage() // Instanciando a classe MyInfoPage
 
 describe('Orange HRM Testes', () => {
-  // Objetos de seletores criados para serem usados nos testes:
-  const listaSeletores = {
-    dateCloseButton: ".--close", // Botão de fechar o calendário
-    genericCombobox: ".oxd-select-text--arrow",
-    opcaoComboboxNationallity: ".oxd-select-dropdown > :nth-child(5)", // Opção de nacionalidade "American"
-    opcaoComboboxMaritalStatus: ".oxd-select-dropdown > :nth-child(2)", // Opção de estado civil "Single"
-    submitButton: "[type='submit']", // Botão de salvar
-  }
-
   // Teste 1: Login com sucesso
   it('Login com sucesso', () => { // Nome do teste
     loginPage.acessoPaginaLogin() // Acessa a página de login
