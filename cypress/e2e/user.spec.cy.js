@@ -43,13 +43,5 @@ describe('Orange HRM Testes', () => {
     dashboardPage.checkDashboardPage() // Verifica se está na página do dashboard
     menuPage.acessoMyInfo() // Acessa a página 'My Info'
     myInfoPage.preenchimentoPersonalDetails('Nome Teste', 'Sobrenome Teste', 'EmployeeT', '13579', '123456789', '2025-04-29') // Preenche os detalhes pessoais com informações passadas por aqui
-
-    cy.get(listaSeletores.dateCloseButton).click() // Clica no botão de fechar o calendário
-    cy.get(listaSeletores.genericCombobox).eq(0).click() // Clica no combobox "Nationality"
-    cy.get(listaSeletores.opcaoComboboxNationallity).click() // Seleciona a nacionalidade "American" 
-    cy.get(listaSeletores.genericCombobox).eq(1).click() // Clica no combobox "Marital Status"
-    cy.get(listaSeletores.opcaoComboboxMaritalStatus).click() // Seleciona o estado civil "Single"
-    cy.get(listaSeletores.submitButton).eq(0).click() // Clica no botão de salvar
-    cy.get('body').should('contain', 'Successfully Updated') // Verifica se a mensagem de sucesso aparece na tela
   })
 })

@@ -24,8 +24,13 @@ class MyInfoPage {
         cy.get(this.listaSeletores().genericField).eq(5).clear().type(otherId) // Preenche o campo "Other Id"
         cy.get(this.listaSeletores().genericField).eq(5).clear().type(driversLicenseNumber) // Preenche o campo "Driver's License Number"
         cy.get(this.listaSeletores().genericField).eq(6).clear().type(licenseExpiryDate) // Preenche o campo "License Expiry Date"
-
-
+        cy.get(this.listaSeletores().dateCloseButton).click() // Clica no botão de fechar o calendário
+        cy.get(this.listaSeletores().genericCombobox).eq(0).click() // Clica no combobox "Nationality"
+        cy.get(this.listaSeletores().opcaoComboboxNationallity).click() // Seleciona a nacionalidade "American" 
+        cy.get(this.listaSeletores().genericCombobox).eq(1).click() // Clica no combobox "Marital Status"
+        cy.get(this.listaSeletores().opcaoComboboxMaritalStatus).click() // Seleciona o estado civil "Single"
+        cy.get(this.listaSeletores().submitButton).eq(0).click() // Clica no botão de salvar
+        cy.get('body').should('contain', 'Successfully Updated') // Verifica se a mensagem de sucesso aparece na tela
     }
 }
 
