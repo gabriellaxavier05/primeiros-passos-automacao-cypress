@@ -5,6 +5,7 @@ import DashboardPage from '../pages/dashboardPage.js' // Importando a classe Das
 import MenuPage from '../pages/menuPage.js' // Importando a classe MenuPage
 import MyInfoPage from '../pages/myInfoPage.js' // Importando a classe MyInfoPage
 
+var Chance = require('chance');
 
 // INSTANCIAÇÕES
 const loginPage = new LoginPage() // Instanciando a classe LoginPage
