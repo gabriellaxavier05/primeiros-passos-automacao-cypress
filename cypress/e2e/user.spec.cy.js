@@ -1,9 +1,9 @@
 // IMPORTAÇÕES
 import userData from '../fixtures/userData.json' // Importando o arquivo JSON que contém os dados de usuário para serem usados nos testes
-import LoginPage from '../../pages/loginPage.js' // Importando a classe LoginPage
-import DashboardPage from '../../pages/dashboardPage.js' // Importando a classe DashboardPage
-import MenuPage from '../../pages/menuPage.js' // Importando a classe MenuPage
-import MyInfoPage from '../../pages/myInfoPage.js' // Importando a classe MyInfoPage
+import LoginPage from '../pages/loginPage.js' // Importando a classe LoginPage
+import DashboardPage from '../pages/dashboardPage.js' // Importando a classe DashboardPage
+import MenuPage from '../pages/menuPage.js' // Importando a classe MenuPage
+import MyInfoPage from '../pages/myInfoPage.js' // Importando a classe MyInfoPage
 
 
 // INSTANCIAÇÕES
