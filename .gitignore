@@ -1,0 +1,6 @@
+# Pasta a ser ignorada
+node_modules
+
+# Arquivo a ser ignorado
+package-lock.json
+node_modules
